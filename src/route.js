@@ -13,12 +13,14 @@ import Booking from './screens/booking/booking';
 import Tickets from './screens/tickets/tickets';
 import Notification from './screens/notification/notification';
 import Complain from './screens/complain/complain';
-import History from './screens/history/history';
+import Profile from './screens/profile/profile';
 import TicketIcon from "react-native-vector-icons/Fontisto";
 import ComplaintIcon from "react-native-vector-icons/Feather";
 import NotiIcon from "react-native-vector-icons/AntDesign";
-import HistoryIcon from "react-native-vector-icons/FontAwesome5";
+import ProfileIcon from "react-native-vector-icons/FontAwesome";
 import TicketDetail from './screens/booking/ticketDetail';
+import sendComplaint from './screens/complain/sendComplaint';
+import TicketViewDetail from './screens/tickets/ticketViewDetail';
 
 
 const Stack=createStackNavigator();
@@ -39,6 +41,9 @@ function AuthRoutes(){
   return(
     <Stack.Navigator 
     initialRouteName="login"
+    screenOptions={{
+      headerTintColor: 'grey',
+    }}
     >
       <Stack.Screen 
       options={{headerShown:false}}
@@ -63,7 +68,7 @@ function BookingRoutes(){
   return(
     <Stack.Navigator
     screenOptions={{
-      headerTintColor: '#fff',
+      headerTintColor: 'grey',
       headerTitleStyle:{
         color:'grey'
       },
@@ -79,11 +84,11 @@ function BookingRoutes(){
       }
     }}
     >
-      {/* <Stack.Screen
+      <Stack.Screen
       name="booking"
       options={{title:"Booking"}}
       component={Booking}
-      /> */}
+      />
       <Stack.Screen
       name="ticketDetails"
       options={{title:"Ticket"}}
@@ -97,7 +102,7 @@ function TicketsRoutes(){
   return(
     <Stack.Navigator
     screenOptions={{
-      headerTintColor: '#fff',
+      headerTintColor: 'grey',
       headerTitleStyle:{
         color:'grey'
       },
@@ -118,6 +123,11 @@ function TicketsRoutes(){
       options={{title:"Tickets"}}
       component={Tickets}
       />
+      <Stack.Screen
+      name="ticketViewDetail"
+      options={{title:"Tickets Detail"}}
+      component={TicketViewDetail}
+      />
     </Stack.Navigator>
   )
 }
@@ -125,7 +135,7 @@ function ComplainRoutes(){
   return(
     <Stack.Navigator
     screenOptions={{
-      headerTintColor: '#fff',
+      headerTintColor: 'grey',
       headerTitleStyle:{
         color:'grey'
       },
@@ -146,14 +156,19 @@ function ComplainRoutes(){
       options={{title:"Complains"}}
       component={Complain}
       />
+      <Stack.Screen
+      name="createComplain"
+      options={{title:"Create Complain"}}
+      component={sendComplaint}
+      />
     </Stack.Navigator>
   )
 }
-function HistoryRoutes(){
+function ProfileRoutes(){
   return(
     <Stack.Navigator
     screenOptions={{
-      headerTintColor: '#fff',
+      headerTintColor: 'grey',
       headerTitleStyle:{
         color:'grey'
       },
@@ -170,9 +185,9 @@ function HistoryRoutes(){
     }}
     >
       <Stack.Screen
-      name="history"
-      options={{title:"History"}}
-      component={History}
+      name="profile"
+      options={{title:"Profile"}}
+      component={Profile}
       />
     </Stack.Navigator>
   )
@@ -181,7 +196,7 @@ function NotificationRoutes(){
   return(
     <Stack.Navigator
     screenOptions={{
-      headerTintColor: '#fff',
+      headerTintColor: 'grey',
       headerTitleStyle:{
         color:'grey'
       },
@@ -250,11 +265,11 @@ function tabs(){
       component={NotificationRoutes} />
       <Tab.Screen 
       options={{
-        title:"History",
-        tabBarIcon:({color})=><HistoryIcon name="history" size={20} color={color}/>
+        title:"Profile",
+        tabBarIcon:({color})=><ProfileIcon name="user" size={20} color={color}/>
       }}
-      name="history" 
-      component={HistoryRoutes} />
+      name="profile" 
+      component={ProfileRoutes} />
 
       </Tab.Navigator>
   );

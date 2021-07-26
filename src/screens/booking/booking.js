@@ -67,7 +67,7 @@ function Booking({navigation}){
     })
     useLayoutEffect(()=>{
         navigation.setOptions({
-            headerTitle: props => <Text style={{textAlign:'center',color:'grey',fontSize:responsiveFontSize(2.5),textTransform:'uppercase',fontFamily:'Montserrat-Bold'}}>{props.children}</Text>,
+            headerTitle: props => <Text style={{textAlign:'center',color:'black',fontSize:responsiveFontSize(2.5),textTransform:'uppercase',fontFamily:'Montserrat-Bold'}}>{props.children}</Text>,
             headerRight:props=>(
                 <View style={{marginRight:responsiveFontSize(2)}}>
                     <TouchableOpacity>
@@ -109,10 +109,19 @@ function Booking({navigation}){
 
     const renderTicket=()=>{
         return(
-                <View
+                <TouchableOpacity
+                onPress={()=>navigation.push('ticketDetails')}
                 style={styles.ticketCon}
                 >
+                    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                    <View style={{marginTop:responsiveFontSize(0.5)}}>
+                        <Text style={{fontSize:responsiveFontSize(1.3)}}>Seats: 67</Text>
+                    </View>
                     <Text style={{textTransform:'uppercase',color:colors.thm,textAlign:'center',marginBottom:responsiveFontSize(1.5)}}>Karachi Express</Text>
+                    <View style={{marginTop:responsiveFontSize(0.5)}}>
+                        <Text style={{fontSize:responsiveFontSize(1.3),color:'green'}}>Price: $345</Text>
+                    </View>
+                    </View>
                     <View style={{flexDirection:'row'}}>
                         <View style={{width:'30%'}}>
                             <Text style={{color:'grey',fontFamily:'Montserrat-Medium',fontSize:responsiveFontSize(1.3),textTransform:'uppercase'}}>Departure:</Text>
@@ -159,7 +168,7 @@ function Booking({navigation}){
                             </View>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
         )
     }
 
@@ -275,7 +284,7 @@ const styles=StyleSheet.create({
         height:responsiveFontSize(18),
         borderRadius:responsiveFontSize(1),
         marginVertical:responsiveFontSize(0.75),
-        backgroundColor:'rgba(255, 255, 255, 0.9)',
+        backgroundColor:'rgba(255, 255, 255, 0.6)',
         // shadowColor: "#000",
         // shadowOffset: {
         //     width: 0,
